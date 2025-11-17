@@ -25,7 +25,7 @@ Este projeto contém o back-end para o aplicativo BRChain. Ele é dividido em du
 
 1.  Clone este repositório:
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
+    git clone https://github.com/GuilhermeRznD/brchainBackend
     cd brchain-backend
     ```
 
