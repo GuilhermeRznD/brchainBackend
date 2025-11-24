@@ -24,3 +24,25 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`API rodando em http://localhost:${port}`);
 });
+
+// noticias aprovadas para o ususario
+app.get("/api/noticias", async (req, res) => {
+    const noticias = await Noticia.find({ status: "aprovada" });
+    res.json(noticias);
+});
+// noticias pendentes para o admin
+app.get("/admin/noticias/pendentes", async (req, res) => {
+    const noticias = await Noticia.find({ status: "pendente" });
+    res.json(noticias);
+});
+// noticias rejeitadas
+app.post("/admin/noticias/:id/rejeitar", async (req, res) => {
+    await Noticia.findByIdAndUpdate(req.params.id, { status: "rejeitada" });
+    res.json({ sucesso: true });
+});
+// noticias aprovadas
+app.post("/admin/noticias/:id/aprovar", async (req, res) => {
+    await Noticia.findByIdAndUpdate(req.params.id, { status: "aprovada" });
+    res.json({ sucesso: true });
+});
+
